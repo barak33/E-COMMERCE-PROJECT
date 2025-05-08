@@ -1,0 +1,9 @@
+HETGA-SHOPEE/
+│── index.html (Home Page)
+│── about.html (About Page)
+│── contact.html (Contact Page)
+│── login.html (Login Page)
+│── signup.html (Signup Page)
+│── styles.css (CSS Styling)
+│── script.js (JavaScript Logic)
+│── images/ (Product Images)
