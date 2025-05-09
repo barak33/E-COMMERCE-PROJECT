@@ -4,6 +4,5 @@ HETGA-SHOPEE/
 │── contact.html (Contact Page)
 │── login.html (Login Page)
 │── signup.html (Signup Page)
-│── styles.css (CSS Styling)
+│── styles.css (CSS Styling)[Inline]
 │── script.js (JavaScript Logic)
-│── images/ (Product Images)
