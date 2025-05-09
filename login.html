@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+    }
+
+    #app-container {
+      max-width: 400px;
+      margin: 80px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    header h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input {
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-container">
+    <header>
+      <h1>Login</h1>
+    </header>
+    <form>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Log In</button>
+    </form>
+    <h2> Don't have an account <a link href="signup.html">Signup </a></h2>
+  </div>
+  <footer>
+    <p>&copy; 2025 HETGA SHOPEE. All rights reserved.</p>
+  </footer>
+</body>
+</html>

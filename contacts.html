@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact us</title>
+  <style>
+    /* Reset and base styles */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #fefefe;
+      color: #333;
+    }
+
+    #app-container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    header h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 12px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    footer {
+      margin-top: 60px;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div id="app-container">
+    <header>
+      <h1>Contact Us</h1>
+    </header>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <footer>
+    <p>&copy; 2025 HETGA SHOPEE. All rights reserved.</p>
+  </footer>
+</body>
+</html>
