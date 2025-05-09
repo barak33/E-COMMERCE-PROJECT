@@ -4,34 +4,306 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HETGA SHOPEE - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+    /* Reset some defaults */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4ff, #d9e2ff);
+      color: #1a1a2e;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px 10px 25px;
+      max-width: 900px;
+      margin: 0 auto;
+      user-select: none;
+    }
+
+    header {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #4a68a1;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #162a57;
+      margin-bottom: 8px;
+      text-shadow: 1px 1px 3px rgba(74, 104, 161, 0.4);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      list-style: none;
+      flex-wrap: wrap;
+      font-weight: 600;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #3851a3;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-size: 0.95rem;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      background-color: #3851a3;
+      color: #f0f4ff;
+      outline: none;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      color: #223366;
+      margin: 18px 0 10px;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 0 1px 2px rgba(74, 104, 161, 0.3);
+    }
+
+    #countdown {
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: #d94e4e;
+      text-shadow: 1px 1px 2px #812929;
+      margin-left: 5px;
+      white-space: nowrap;
+    }
+
+    #searchBox {
+      width: 100%;
+      padding: 10px 14px;
+      font-size: 1rem;
+      border: 2px solid #4a68a1;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s ease;
+    }
+
+    #searchBox:focus {
+      border-color: #223366;
+      outline: none;
+      box-shadow: 0 0 8px #4a68a1cc;
+      background-color: #f7faff;
+    }
+
+    #productList, #cart {
+      list-style: none;
+      padding-left: 0;
+      width: 100%;
+      max-height: 350px;
+      overflow-y: auto;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(74, 104, 161, 0.15);
+      background-color: #ffffffcc;
+      margin-bottom: 25px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+    }
+
+    #productList li.product {
+      cursor: pointer;
+      font-weight: 600;
+      color: #2b376b;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      width: 150px;
+      border-radius: 12px;
+      padding: 12px 10px 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 1px 5px rgba(58, 89, 157, 0.1);
+      background: #f9fbff;
+      border: 2px solid transparent;
+    }
+
+    #productList li.product:focus,
+    #productList li.product:hover {
+      outline: none;
+      background-color: #4a68a1;
+      color: #f0f4ff;
+      font-weight: 700;
+      border-color: #3851a3;
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 6px 15px rgba(58, 89, 157, 0.35);
+    }
+
+    #productList img {
+      width: 140px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(58,89,157,0.22);
+      user-select: none;
+      pointer-events: none;
+      transition: filter 0.3s ease;
+    }
+
+    #productList li.product:hover img,
+    #productList li.product:focus img {
+      filter: brightness(0.85) drop-shadow(0 0 6px rgba(255 255 255 / 0.8));
+    }
+
+    #cart li {
+      padding: 10px 16px;
+      border-bottom: 1px solid #ccd4e7;
+      color: #223366;
+      font-weight: 600;
+    }
+
+    #cart li:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #7a7a9d;
+      margin-top: auto;
+      padding-top: 8px;
+      border-top: 1px solid #d1d5e6;
+      width: 100%;
+    }
+
+    /* Scrollbar styling for product list and cart */
+    #productList::-webkit-scrollbar,
+    #cart::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    #productList::-webkit-scrollbar-thumb,
+    #cart::-webkit-scrollbar-thumb {
+      background-color: #4a68a1;
+      border-radius: 10px;
+    }
+
+    @media (max-width: 400px) {
+      body {
+        max-width: 100vw;
+        padding: 15px 15px 25px;
+      }
+      nav ul {
+        gap: 10px;
+      }
+      #productList, #cart {
+        max-height: 300px;
+      }
+      #productList {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+      }
+
+      #productList img {
+        width: 120px;
+        height: 120px;
+      }
+
+      #productList li.product {
+        width: 120px;
+        padding: 10px 8px 12px;
+      }
+    }
+  </style>
+
 </head>
 <body>
     <header>
         <h1>Welcome to HETGA SHOPEE</h1>
         <nav>
             <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="signup.html">Signup</a></li>
+                <li><a href="index.html" aria-label="Home page link">Home</a></li>
+                <li><a href="about.html" aria-label="About page link">About</a></li>
+                <li><a href="contacts.html" aria-label="Contact page link">Contact</a></li>
+                <li><a href="login.html" aria-label="Login page link">Login</a></li>
+                <li><a href="signup.html" aria-label="Signup page link">Signup</a></li>
             </ul>
         </nav>
     </header>
 
     <h2>Limited-Time Offer! Sale ends in: <span id="countdown"></span></h2>
 
-    <input type="text" id="searchBox" placeholder="Search products..." onkeyup="searchProducts()">
-    <ul id="productList">
-        <li class="product" onclick="addToCart('Laptop')">Laptop</li>
-        <li class="product" onclick="addToCart('Smartphone')">Smartphone</li>
-        <li class="product" onclick="addToCart('Headphones')">Headphones</li>
+    <ul id="productList" role="list" aria-label="Product List">
+        <li class="product" tabindex="0" onclick="addToCart('Laptop')" onkeypress="if(event.key==='Enter'){addToCart('Laptop')}">
+            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=400&q=90" alt="Laptop" loading="lazy" />
+            Laptop
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Smartphone')" onkeypress="if(event.key==='Enter'){addToCart('Smartphone')}">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=400&q=90" alt="Smartphone" loading="lazy" />
+            Smartphone
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Headphones')" onkeypress="if(event.key==='Enter'){addToCart('Headphones')}">
+            <img src="https://assets.bosecreative.com/transform/6f5d20ca-f183-410a-b33d-281378107494/QCUH24_Holiday_FY24_012?io=transform:crop,height:1000,width:1920,path:square&quality=95" alt="Headphones" loading="lazy" />
+            Headphones
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Tablet')" onkeypress="if(event.key==='Enter'){addToCart('Tablet')}">
+            <img src="https://media.wired.com/photos/649b2dbfc859c4a1cdecc412/4:3/w_960,c_limit/Amazon-Fire-Max-11-Review--Stand-Gear.jpg&tbnid=tOFi-IpIOXpkKM&vet=1&imgrefurl=https://www.wired.com/gallery/the-best-tablets/&docid=tB9Pw5ntIM1D_M&w=960&h=720&source=sh/x/im/m1/1&kgs=ee264bcc5f86a588" alt="Tablet" loading="lazy" />
+            Tablet
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Smartwatch')" onkeypress="if(event.key==='Enter'){addToCart('Smartwatch')}">
+            <img src="https://i.ebayimg.com/images/g/8cEAAOSwnNBmbz0z/s-l1600.webp" alt="Smartwatch" loading="lazy" />
+            Smartwatch
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Camera')" onkeypress="if(event.key==='Enter'){addToCart('Camera')}">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQfxPedWjxkXJc2auRUiKEWahf_7ONYV_JkFQ&s" alt="Camera" loading="lazy" />
+            Camera
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Speaker')" onkeypress="if(event.key==='Enter'){addToCart('Speaker')}">
+            <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c3BlYWtlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Speaker" loading="lazy" />
+            Speaker
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Keyboard')" onkeypress="if(event.key==='Enter'){addToCart('Keyboard')}">
+            <img src="https://www.geeknaut.com/images/2009/03/optimus_tactus_keyboard_side.jpg" alt="Keyboard" loading="lazy" />
+            Keyboard
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Mouse')" onkeypress="if(event.key==='Enter'){addToCart('Mouse')}">
+            <img src="https://arcticfox.com/cdn/shop/files/1_f87f08be-bf1b-4065-ae81-21d7c1ad0f69.jpg?v=1699270558" alt="Mouse" loading="lazy" />
+            Mouse
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Monitor')" onkeypress="if(event.key==='Enter'){addToCart('Monitor')}">
+            <img src="https://i.rtings.com/assets/pages/lzrzcosQ/best-gaming-monitor-20230824-4-medium.jpg?format=auto" alt="Monitor" loading="lazy" />
+            Monitor
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Printer')" onkeypress="if(event.key==='Enter'){addToCart('Printer')}">
+            <img src="https://media.istockphoto.com/id/1340404394/photo/businessmen-press-button-on-the-panel-for-using-photocopier-or-printer-for-printout-and.jpg?s=612x612&w=0&k=20&c=TQj50RlPtGGZNHUHokb7qKhbS2AKLAn4288yLIJjwGM=" alt="Printer" loading="lazy" />
+            Printer
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('Router')" onkeypress="if(event.key==='Enter'){addToCart('Router')}">
+            <img src="https://images.pexels.com/photos/159304/network-cable-ethernet-computer-159304.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Router" loading="lazy" />
+            Router
+        </li>
+        <li class="product" tabindex="0" onclick="addToCart('External Hard Drive')" onkeypress="if(event.key==='Enter'){addToCart('External Hard Drive')}">
+            <img src="https://gadgetworld.co.ke/wp-content/uploads/2021/12/Trancend-1TB-Outer-.jpg" alt="External Hard Drive" loading="lazy" />
+            External Hard Drive
+        </li>
     </ul>
 
     <h2>Shopping Cart</h2>
     <ul id="cart"></ul>
 
     <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2025 HETGA SHOPEE. All rights reserved.</p>
+    </footer>
 </body>
 </html>
